@@ -1,0 +1,122 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>demo</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="container">
+      <div id="messages-container"></div>
+      <div class="header">
+        <h3 class="text-muted">demo</h3>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <h2>Taxons</h2>
+          <div id="taxon-container"></div>
+        </div>
+        <div class="col-md-9">
+          <h2>Current data</h2>
+          <div id="current-items-container"></div>
+        </div>
+      </div>
+    </div>
+
+    <script id="taxons" type="text/x-handlebars-template">
+      <ul class="taxon-list list-unstyled">
+        {{#each taxons}}
+          <li><span>{{name}}</span></li>
+        {{/each}}
+      </ul>
+    </script>
+
+    <script id="current-items" type="text/x-handlebars-template">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each items}}
+          <tr>
+            <td>{{_id}}</td>
+            <td> <img src="{{picture}}" alt="" /></td>
+            <td>{{name.first}} - {{name.last}}</td>
+            <td>{{company}}</td>
+          </tr>
+          {{/each}}
+      </tbody>
+    </script>
+
+    <script id="messages" type="text/x-handlebars-template">
+      <div class="alert alert-{{type}} {{#if dissmissable}}alert-dismissible{{/if}} fade in" role="alert">
+        {{#if dissmissable}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        {{/if}}
+        {{message}}
+      </div>
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/es6-promise-polyfill/promise.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/axios/dist/axios.js"></script>
+    <script src="/bower_components/handlebars/handlebars.js"></script>
+    <script src="/bower_components/eventEmitter/EventEmitter.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/plugins.js -->
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/manager/taxon_manager.js"></script>
+    <script src="scripts/manager/items_manager.js"></script>
+
+    <script src="scripts/views/taxon_view.js"></script>
+    <script src="scripts/views/current_items_view.js"></script>
+    <script src="scripts/views/message_view.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
